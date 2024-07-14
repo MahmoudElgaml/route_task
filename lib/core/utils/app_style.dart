@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-
 class AppStyle {
-
-
   static TextStyle style14(BuildContext context) {
     return TextStyle(
       color: Colors.black,
@@ -12,6 +9,21 @@ class AppStyle {
     );
   }
 
+  static TextStyle style11(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: responsiveFont(context: context, fontSize: 11),
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle style12(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: responsiveFont(context: context, fontSize: 12),
+      fontWeight: FontWeight.w500,
+    );
+  }
 
   static double scaleFactor(double width) {
     if (width < 600) {
@@ -25,9 +37,7 @@ class AppStyle {
 
   static double responsiveFont(
       {required double fontSize, required BuildContext context}) {
-    double width = MediaQuery
-        .sizeOf(context)
-        .width;
+    double width = MediaQuery.sizeOf(context).width;
     double scalefactor = scaleFactor(width);
     double lowerLimit = fontSize * .8;
     double upperLimit = fontSize * 1.3;
@@ -36,4 +46,3 @@ class AppStyle {
     return responsiveFont.clamp(lowerLimit, upperLimit);
   }
 }
-

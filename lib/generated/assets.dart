@@ -2,7 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String imagesIconPluscircle = 'assets/images/iconPluscircle.svg';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesLoveButton = 'assets/images/loveButton.svg';
   static const String imagesProductTest = 'assets/images/productTest.png';
 
 }
