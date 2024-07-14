@@ -32,7 +32,7 @@ class ProductItemDetail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  product.price.toString(),
+                  ("EGP${product.price.toString()}"),
                   style: AppStyle.style14(context),
                 ),
                 const SizedBox(
@@ -49,30 +49,28 @@ class ProductItemDetail extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          FittedBox(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Review",
-                  style: AppStyle.style14(context),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  product.rating.toString(),
-                  style: AppStyle.style12(context),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                ),
-              ],
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Review",
+                style: AppStyle.style14(context),
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Text(
+                  "(${product.rating.toString()})",
+                style: AppStyle.style12(context),
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              const Icon(
+                Icons.star,
+                color: Colors.yellow,
+              ),
+            ],
           )
         ],
       ),

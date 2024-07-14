@@ -32,7 +32,7 @@ class AllProductPage extends StatelessWidget {
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           mainAxisSpacing: 16,
                           crossAxisSpacing: 16,
-                          childAspectRatio: 191 / 260,
+                          childAspectRatio: 191 / 270,
                           crossAxisCount: 2),
                       itemBuilder: (context, index) => ProductItem(product: AllProductCubit.get(context).product[index],),
                       itemCount: AllProductCubit.get(context).product.length,
