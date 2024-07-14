@@ -1,12 +1,11 @@
 import 'package:route_task/features/all_product_feature/domain/entities/product_entity.dart';
 
-class ProductModel extends ProductEntity {
+class ProductModel extends ProductEntity{
   ProductModel({
-    this.products,
-    this.total,
-    this.skip,
-    this.limit,
-  });
+      super.products,
+      this.total, 
+      this.skip, 
+      this.limit,});
 
   ProductModel.fromJson(dynamic json) {
     if (json['products'] != null) {
@@ -20,48 +19,38 @@ class ProductModel extends ProductEntity {
     limit = json['limit'];
   }
 
-  List<Products>? products;
-  int? total;
-  int? skip;
-  int? limit;
+  num? total;
+  num? skip;
+  num? limit;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (products != null) {
-      map['products'] = products?.map((v) => v.toJson()).toList();
-    }
-    map['total'] = total;
-    map['skip'] = skip;
-    map['limit'] = limit;
-    return map;
-  }
+
+
 }
 
-class Products extends ProductEntity {
+class Products extends Product{
   Products({
-    super.id,
-    super.title,
-    super.description,
-    this.category,
-    super.price,
-    super.discountPercentage,
-    super.rating,
-    this.stock,
-    this.tags,
-    this.brand,
-    this.sku,
-    this.weight,
-    this.dimensions,
-    this.warrantyInformation,
-    this.shippingInformation,
-    this.availabilityStatus,
-    this.reviews,
-    this.returnPolicy,
-    this.minimumOrderQuantity,
-    this.meta,
-    super.images,
-    this.thumbnail,
-  });
+      super.id,
+      super.title,
+      super.description,
+      this.category, 
+      super.price,
+      super.discountPercentage,
+      super.rating,
+      this.stock, 
+      this.tags, 
+      this.brand, 
+      this.sku, 
+      this.weight, 
+      this.dimensions, 
+      this.warrantyInformation, 
+      this.shippingInformation, 
+      this.availabilityStatus, 
+      this.reviews, 
+      this.returnPolicy, 
+      this.minimumOrderQuantity, 
+      this.meta, 
+      super.images,
+      this.thumbnail,});
 
   Products.fromJson(dynamic json) {
     id = json['id'];
@@ -76,9 +65,7 @@ class Products extends ProductEntity {
     brand = json['brand'];
     sku = json['sku'];
     weight = json['weight'];
-    dimensions = json['dimensions'] != null
-        ? Dimensions.fromJson(json['dimensions'])
-        : null;
+    dimensions = json['dimensions'] != null ? Dimensions.fromJson(json['dimensions']) : null;
     warrantyInformation = json['warrantyInformation'];
     shippingInformation = json['shippingInformation'];
     availabilityStatus = json['availabilityStatus'];
@@ -95,22 +82,24 @@ class Products extends ProductEntity {
     thumbnail = json['thumbnail'];
   }
 
+  String? title;
+  String? description;
   String? category;
 
-  int? stock;
+  num? stock;
   List<String>? tags;
   String? brand;
   String? sku;
-  int? weight;
+  num? weight;
   Dimensions? dimensions;
   String? warrantyInformation;
   String? shippingInformation;
   String? availabilityStatus;
   List<Reviews>? reviews;
   String? returnPolicy;
-  int? minimumOrderQuantity;
+  num? minimumOrderQuantity;
   Meta? meta;
-
+  List<String>? images;
   String? thumbnail;
 
   Map<String, dynamic> toJson() {
@@ -145,15 +134,15 @@ class Products extends ProductEntity {
     map['thumbnail'] = thumbnail;
     return map;
   }
+
 }
 
 class Meta {
   Meta({
-    this.createdAt,
-    this.updatedAt,
-    this.barcode,
-    this.qrCode,
-  });
+      this.createdAt, 
+      this.updatedAt, 
+      this.barcode, 
+      this.qrCode,});
 
   Meta.fromJson(dynamic json) {
     createdAt = json['createdAt'];
@@ -161,7 +150,6 @@ class Meta {
     barcode = json['barcode'];
     qrCode = json['qrCode'];
   }
-
   String? createdAt;
   String? updatedAt;
   String? barcode;
@@ -175,16 +163,16 @@ class Meta {
     map['qrCode'] = qrCode;
     return map;
   }
+
 }
 
 class Reviews {
   Reviews({
-    this.rating,
-    this.comment,
-    this.date,
-    this.reviewerName,
-    this.reviewerEmail,
-  });
+      this.rating, 
+      this.comment, 
+      this.date, 
+      this.reviewerName, 
+      this.reviewerEmail,});
 
   Reviews.fromJson(dynamic json) {
     rating = json['rating'];
@@ -193,8 +181,7 @@ class Reviews {
     reviewerName = json['reviewerName'];
     reviewerEmail = json['reviewerEmail'];
   }
-
-  int? rating;
+  num? rating;
   String? comment;
   String? date;
   String? reviewerName;
@@ -209,24 +196,23 @@ class Reviews {
     map['reviewerEmail'] = reviewerEmail;
     return map;
   }
+
 }
 
 class Dimensions {
   Dimensions({
-    this.width,
-    this.height,
-    this.depth,
-  });
+      this.width, 
+      this.height, 
+      this.depth,});
 
   Dimensions.fromJson(dynamic json) {
     width = json['width'];
     height = json['height'];
     depth = json['depth'];
   }
-
-  double? width;
-  double? height;
-  double? depth;
+  num? width;
+  num? height;
+  num? depth;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -235,4 +221,5 @@ class Dimensions {
     map['depth'] = depth;
     return map;
   }
+
 }

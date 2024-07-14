@@ -37,6 +37,9 @@ dependencies:
   gap: ^3.0.1
   flutter_svg: ^2.0.10+1
   dartz: ^0.10.1
+  flutter_bloc: ^8.1.6
+  bloc: ^8.1.4
+  cached_network_image: ^3.3.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

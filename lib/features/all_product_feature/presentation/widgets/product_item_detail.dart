@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_style.dart';
+import '../../domain/entities/product_entity.dart';
 
 class ProductItemDetail extends StatelessWidget {
-  const ProductItemDetail({super.key});
-
+  const ProductItemDetail({super.key,required this.product});
+ final Product product;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -13,59 +15,69 @@ class ProductItemDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "productName",
+            product.title??"",
+            maxLines: 1,
             style: AppStyle.style14(context),
           ),
           Text(
-            "productdescription",
+            product.description??"",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: AppStyle.style14(context),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "price",
-                style: AppStyle.style14(context),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-              Text(
-                "dissacount",
-                style: AppStyle.style11(context).copyWith(
-                    decoration: TextDecoration.lineThrough),
-              ),
-            ],
+          const Gap(8),
+          FittedBox(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  product.price.toString(),
+                  style: AppStyle.style14(context),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                Text(
+                  getDiscount(),
+                  style: AppStyle.style11(context).copyWith(
+                      decoration: TextDecoration.lineThrough),
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             height: 8,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Review",
-                style: AppStyle.style14(context),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                "(4.6)",
-                style: AppStyle.style12(context),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              const Icon(
-                Icons.star,
-                color: Colors.yellow,
-              ),
-            ],
+          FittedBox(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Review",
+                  style: AppStyle.style14(context),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  product.rating.toString(),
+                  style: AppStyle.style12(context),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+              ],
+            ),
           )
         ],
       ),
     );
   }
+
+  String getDiscount() => (product.discountPercentage!*product.price!).toString();
 }

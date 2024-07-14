@@ -1,19 +1,26 @@
 class ProductEntity {
-  String? id;
- List< String>? images;
+  ProductEntity({
+    this.products,
+  });
+
+  List<Product>? products;
+}
+
+class Product {
+  Product(
+      {this.id,
+      this.title,
+      this.description,
+      this.price,
+      this.discountPercentage,
+      this.rating,
+      this.images});
+  num? id;
   String? title;
   String? description;
-  String? price;
-  String? discountPercentage;
-  String? rating;
 
-  ProductEntity({
-    this.id,
-    this.images,
-    this.title,
-    this.description,
-    this.price,
-    this.discountPercentage,
-    this.rating,
-  });
+  num? price;
+  num? discountPercentage;
+  num? rating;
+  List<String>? images;
 }

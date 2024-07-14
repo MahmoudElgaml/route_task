@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:route_task/features/all_product_feature/presentation/manager/all_product_cubit.dart';
+import 'package:route_task/features/all_product_feature/presentation/manager/all_product_cubit.dart';
 import 'package:route_task/features/all_product_feature/presentation/widgets/costume_appBar.dart';
 import 'package:route_task/features/all_product_feature/presentation/widgets/product_item.dart';
 
@@ -16,16 +19,26 @@ class AllProductPage extends StatelessWidget {
             children: [
               const CostumeAppbar(),
               const Gap(30),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      childAspectRatio: 191 / 237,
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) => const ProductItem(),
-                  itemCount: 10,
-                ),
+              BlocBuilder<AllProductCubit, AllProductState>(
+                builder: (context, state) {
+                  if (state is AllProductLoadingState){
+                   return const Center(child: CircularProgressIndicator());
+                  }
+                  if(state is AllProductFailState){
+                    return Center(child: Text(state.message));
+                  }
+                  return Expanded(
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          childAspectRatio: 191 / 260,
+                          crossAxisCount: 2),
+                      itemBuilder: (context, index) => ProductItem(product: AllProductCubit.get(context).product[index],),
+                      itemCount: AllProductCubit.get(context).product.length,
+                    ),
+                  );
+                },
               )
             ],
           ),
