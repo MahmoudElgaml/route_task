@@ -11,14 +11,14 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 2, color: Color(0x4C004182)),
-          borderRadius: BorderRadius.circular(15),
+    return FittedBox(
+      child: Container(
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 2, color: Color(0x4C004182)),
+            borderRadius: BorderRadius.circular(15),
+          ),
         ),
-      ),
-      child: FittedBox(
         child: Stack(
           children: [
             Column(

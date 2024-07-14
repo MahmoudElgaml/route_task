@@ -8,18 +8,28 @@ class AllProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-       body: Padding(
-         padding: EdgeInsets.all(16.0),
-         child: Column(
-           children: [
-             CostumeAppbar(),
-             Gap(30),
-             Center(child: ProductItem())
-           ],
-         ),
-       ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              const CostumeAppbar(),
+              const Gap(30),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 191 / 237,
+                      crossAxisCount: 2),
+                  itemBuilder: (context, index) => const ProductItem(),
+                  itemCount: 10,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
