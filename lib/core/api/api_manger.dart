@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import 'end_points.dart';
 
-
+@injectable
+@singleton
 class APiManger {
   final Dio dio = Dio();
 

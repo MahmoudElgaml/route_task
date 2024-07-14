@@ -1,17 +1,19 @@
 class ProductEntity {
-  String image;
-  String name;
-  String description;
-  String price;
-  String discount;
-  String review;
+  String? id;
+ List< String>? images;
+  String? title;
+  String? description;
+  String? price;
+  String? discountPercentage;
+  String? rating;
 
-  ProductEntity(
-    this.image,
-    this.name,
+  ProductEntity({
+    this.id,
+    this.images,
+    this.title,
     this.description,
     this.price,
-    this.discount,
-    this.review,
-  );
+    this.discountPercentage,
+    this.rating,
+  });
 }
